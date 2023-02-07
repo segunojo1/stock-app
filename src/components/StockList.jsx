@@ -10,7 +10,7 @@ const StockList = () => {
             try {
                const res = await finnhub.get('/quote', {
                 params: {
-                    symbol: 'MSFT'
+                    symbol: 'AMZN'
                 }
                })
                console.log(res);
