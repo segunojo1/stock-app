@@ -3,33 +3,32 @@ import finnhub from '../apis/finnhub'
 
 const StockList = () => {
     const [stocks, setstocks] = useState()
-    const [watchedStocks, setWatchedStocks] = useState(['GOOGL', 'MSFT'])
+    const [watchedStocks, setWatchedStocks] = useState(['GOOGL', 'MSFT', 'AMZN'])
 
     useEffect(() => {
       let isMounted = true;
       const responses = []
         const fetchFinn = async () => {
             try {
-               
-               const resp = Promise.all(
-                finnhub.get('/quote', {
-                  params: {
-                      symbol: 'GOOGL'
-                  }
-                 }),
-                 finnhub.get('/quote', {
-                  params: {
-                      symbol: 'MSFT'
-                  }
-                 }),
-                 finnhub.get('/quote', {
-                  params: {
-                      symbol: 'AMZN'
-                  }
-                 })
+               const respo = await Promise.all(
+                watchedStocks.map((stocks) => {
+                  return finnhub.get('/quote', {
+                    params: {
+                      symbol: stocks
+                    }
+                   })
+                })
                )
+                console.log(respo);
+               const data = respo.map((dat) => {
+                return {
+                  data: dat.data,
+                  symbol: dat.config.params.symbol
+                }
+              })
+              console.log(data);
                if(isMounted) {
-                 setstocks(res.data);
+                 setstocks(data);
                }
             } catch (error) {
                 
