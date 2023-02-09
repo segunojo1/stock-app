@@ -14,7 +14,6 @@ const StockList = () => {
     }
     useEffect(() => {
       let isMounted = true;
-      const responses = []
 
         const fetchFinn = async () => {
             try {
@@ -65,12 +64,11 @@ const StockList = () => {
             return <tr>
               <td>{stock.symbol}</td>
               <td>{stock.data.c}</td>
-              <td className={`text-[${getColor(stock.data)}]`}>{stock.symbol}</td>
-              <td>{stock.symbol}</td>
-              <td>{stock.symbol}</td>
-              <td>{stock.symbol}</td>
-              <td>{stock.symbol}</td>
-
+              <td className={`text-[${getColor(stock.data)}]`}>{stock.data}</td>
+              <td>{stock.data}</td>
+              <td>{stock.data}</td>
+              <td>{stock.data}</td>
+              <td>{stock.data}</td>
             </tr>
           })}
         </tbody>
