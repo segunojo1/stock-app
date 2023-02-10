@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import finnhub from '../apis/finnhub'
 
 const StockList = () => {
-    const [stocks, setstocks] = useState()
+    const [stocks, setstocks] = useState([])
     const [watchedStocks, setWatchedStocks] = useState(['GOOGL', 'MSFT', 'AMZN'])
 
     const getColor = (change) => {
@@ -12,7 +12,7 @@ const StockList = () => {
           return 'red'
          }
     }
-    useEffect(() => {
+    useEffect(() =>{
       let isMounted = true;
 
         const fetchFinn = async () => {
@@ -38,11 +38,12 @@ const StockList = () => {
                  setstocks(data);
                }
             } catch (error) {
-                
+                console.log(error);
             }
         }
         fetchFinn()
         return () => (isMounted = false)
+        
     }, [])
   return (
     <div>
@@ -64,11 +65,12 @@ const StockList = () => {
             return <tr>
               <td>{stock.symbol}</td>
               <td>{stock.data.c}</td>
-              <td className={`text-[${getColor(stock.data)}]`}>{stock.data}</td>
-              <td>{stock.data}</td>
-              <td>{stock.data}</td>
-              <td>{stock.data}</td>
-              <td>{stock.data}</td>
+              <td className={`text-[${getColor(stock.data)}]`}>{stock.data.d}</td>
+              <td>{stock.data.dp}</td>
+              <td>{stock.data.h}</td>
+              <td>{stock.data.l}</td>
+              <td>{stock.data.o}</td>
+              <td>{stock.data.pc}</td>
             </tr>
           })}
         </tbody>
