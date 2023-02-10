@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import finnhub from '../apis/finnhub'
+import {IoMdArrowDropup} from 'react-icons/io'
+import {IoMdArrowDropdown} from 'react-icons/io'
 
 const StockList = () => {
     const [stocks, setstocks] = useState([])
     const [watchedStocks, setWatchedStocks] = useState(['GOOGL', 'MSFT', 'AMZN'])
 
     const getColor = (change) => {
-         if(change > 0) {
-          return 'green'
-         }else{
-          return 'red'
-         }
+         return change > 0 ? 'green' : 'red'
+    }
+    const getIcon = (change) => {
+        return change > 0 ? <IoMdArrowDropup />  : <IoMdArrowDropdown />
     }
     useEffect(() =>{
       let isMounted = true;
@@ -46,11 +47,11 @@ const StockList = () => {
         
     }, [])
   return (
-    <div>
-       <table>
-        <thead>
+    <div className='mx-auto w-fit'>
+       <table className='w-[100%]'>
+        <thead className=''>
           <tr>
-            <th>Name</th>
+            <th className='h-[70px]'>Name</th>
             <th>Last</th>
             <th>Chg</th>
             <th>Chg%</th>
@@ -62,14 +63,14 @@ const StockList = () => {
         </thead>
         <tbody>
           {stocks.map((stock) => {
-            return <tr>
-              <td>{stock.symbol}</td>
-              <td>{stock.data.c}</td>
-              <td className={`text-[${getColor(stock.data)}]`}>{stock.data.d}</td>
-              <td>{stock.data.dp}</td>
-              <td>{stock.data.h}</td>
-              <td>{stock.data.l}</td>
-              <td>{stock.data.o}</td>
+            return <tr className='h-[50px]' key={stock.symbol}>
+              <td className=' w-[70px]'>{stock.symbol}</td>
+              <td className=' w-[70px]'>{stock.data.c}</td>
+              <td className=' w-[70px]'><p className={`text-[${getColor(stock.data.d)}] flex items-center`} >{stock.data.d}{getIcon(stock.data.d)}</p></td>
+              <td className=' w-[70px]'><p className={`text-[${getColor(stock.data.d)}] flex items-center`}>{stock.data.dp}{getIcon(stock.data.d)}</p></td>
+              <td className=' w-[70px]'>{stock.data.h}</td>
+              <td className=' w-[70px]'>{stock.data.l}</td>
+              <td className=' w-[70px]'>{stock.data.o}</td>
               <td>{stock.data.pc}</td>
             </tr>
           })}
