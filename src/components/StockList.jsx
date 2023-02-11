@@ -3,6 +3,7 @@ import finnhub from '../apis/finnhub'
 import {IoMdArrowDropup} from 'react-icons/io'
 import {IoMdArrowDropdown} from 'react-icons/io'
 import { WatchListContext } from '../context/watchListContext'
+import { useNavigate } from 'react-router-dom'
 
 const StockList = () => {
     const [stocks, setstocks] = useState([])
@@ -13,6 +14,11 @@ const StockList = () => {
     }
     const getIcon = (change) => {
         return change > 0 ? <IoMdArrowDropup />  : <IoMdArrowDropdown />
+    }
+
+    const navigate = useNavigate()
+    const handleStockSelect =(sym) => {
+      navigate(`detail/${sym}`)
     }
     useEffect(() =>{
       let isMounted = true;
@@ -63,7 +69,7 @@ const StockList = () => {
         </thead>
         <tbody>
           {stocks.map((stock) => {
-            return <tr className='h-[50px]' key={stock.symbol}>
+            return <tr className='h-[50px]' onClick={()=>handleStockSelect(stock.symbol)} key={stock.symbol}>
               <td className=' w-[70px]'>{stock.symbol}</td>
               <td className=' w-[70px]'>{stock.data.c}</td>
               <td className=' w-[70px]'><p className={`text-[${getColor(stock.data.d)}] flex items-center`} >{stock.data.d}{getIcon(stock.data.d)}</p></td>
