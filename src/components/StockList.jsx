@@ -27,7 +27,6 @@ const StockList = () => {
                    })
                 })
                )
-                console.log(respo);
                const data = respo.map((dat) => {
                 return {
                   data: dat.data,

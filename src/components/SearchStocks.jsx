@@ -9,33 +9,25 @@ const SearchStocks = () => {
     const showItem =  search ? 'block' : 'hidden';
     return (
       <ul className={`${showItem} border h-[500px] w-[300px] p-[10px] overflow-y-scroll absolute z-index-9999 bg-white`}>
-        <li>MSFT</li>
-        <li>AMZN</li>
-        <li>MSFT</li>
-        <li>AMZN</li>
-        <li>MSFT</li>
-        <li>AMZN</li>
-        <li>MSFT</li>
-        <li>AMZN</li>
-        <li>MSFT</li>
-        <li>AMZN</li>
-        <li>MSFT</li>
-        <li>AMZN</li>
-        <li>MSFT</li>
+        {results.map((result) => {
+           return <li>{result.description}</li>
+        })}
         
       </ul>
     )
   }
   useEffect(() => {
     let isMounted = true;
-    const fetchData = () => {
+    const fetchData = async () => {
       try {
-        const res = finnhub.get('/search', {
-          q: {search}
+        const res = await finnhub.get('/search', {
+          params: {
+            q: search
+          }
         })
-        if(isMounted) {
           setResults(res.data.result)
-        }
+          console.log(results);
+        
       } catch (error) {
         
       }    
@@ -45,7 +37,6 @@ const SearchStocks = () => {
     }else{
       setResults([])
     }
-    return () => (isMounted=false)
   }, [search])
   return (
     <div className='w-fit mx-auto'>
