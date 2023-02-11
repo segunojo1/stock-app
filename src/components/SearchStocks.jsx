@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import finnhub from '../apis/finnhub'
+import { useGlobalContext, WatchListContext } from '../context/watchListContext';
 
 const SearchStocks = () => {
   const [search, setSearch] = useState('');
   const [results, setResults] = useState([]);
+  const {addToStocks} = useContext(WatchListContext)
 
   function showSearchItems() {
     const showItem =  search ? 'block' : 'hidden';
     return (
       <ul className={`${showItem} border h-[500px] w-[300px] p-[10px] overflow-y-scroll absolute z-index-9999 bg-white`}>
         {results.map((result) => {
-           return <li>{result.description}</li>
+           return <li key={result.symbol} onClick={()=>addToStocks(result.symbol)}>{result.description}</li>
         })}
         
       </ul>

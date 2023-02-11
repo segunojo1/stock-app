@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import finnhub from '../apis/finnhub'
 import {IoMdArrowDropup} from 'react-icons/io'
 import {IoMdArrowDropdown} from 'react-icons/io'
+import { WatchListContext } from '../context/watchListContext'
 
 const StockList = () => {
     const [stocks, setstocks] = useState([])
-    const [watchedStocks, setWatchedStocks] = useState(['GOOGL', 'MSFT', 'AMZN'])
+    const {watchedStock} = useContext(WatchListContext)
 
     const getColor = (change) => {
          return change > 0 ? 'green' : 'red'
@@ -19,7 +20,7 @@ const StockList = () => {
         const fetchFinn = async () => {
             try {
                const respo = await Promise.all(
-                watchedStocks.map((stocks) => {
+                watchedStock.map((stocks) => {
                   return finnhub.get('/quote', {
                     params: {
                       symbol: stocks
@@ -44,7 +45,7 @@ const StockList = () => {
         fetchFinn()
         return () => (isMounted = false)
         
-    }, [])
+    }, [watchedStock])
   return (
     <div className='mx-auto w-fit'>
        <table className='w-[100%]'>
