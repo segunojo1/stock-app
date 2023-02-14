@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import finnhub from '../apis/finnhub'
-import Chart from '../components/chart'
+import Charts from '../components/chart'
 
 
 const formatData = (data) => {
@@ -74,7 +74,7 @@ const StockDetail = () => {
 
   return (
     <div>StockDetail {symbol}
-    {chartData && <Chart chartData={chartData} symbol={symbol}/>}
+    {chartData && <Charts chartData={chartData} symbol={symbol}/>}
     </div>
   )
 }

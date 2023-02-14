@@ -1,6 +1,7 @@
 import React from 'react'
+import Chart from "react-apexcharts";
 
-const Chart = ({chartData}) => {
+const Charts = ({chartData, symbol}) => {
     const {day, week, year} = chartData;
     const options = {
       title: {
@@ -38,4 +39,4 @@ const Chart = ({chartData}) => {
   )
 }
 
-export default Chart
+export default Charts
