@@ -10,7 +10,7 @@ const StockList = () => {
     const {watchedStock} = useContext(WatchListContext)
 
     const getColor = (change) => {
-         return change > 0 ? 'green' : 'red'
+         return change > 0 ? '#00FF00' : '#FF0000'
     }
     const getIcon = (change) => {
         return change > 0 ? <IoMdArrowDropup />  : <IoMdArrowDropdown />
@@ -56,7 +56,7 @@ const StockList = () => {
     <div className='mx-auto w-fit'>
        <table className='w-[100%]'>
         <thead className=''>
-          <tr>
+          <tr >
             <th className='h-[70px]'>Name</th>
             <th>Last</th>
             <th>Chg</th>
@@ -69,7 +69,7 @@ const StockList = () => {
         </thead>
         <tbody>
           {stocks.map((stock) => {
-            return <tr className='h-[50px]' onClick={()=>handleStockSelect(stock.symbol)} key={stock.symbol}>
+            return <tr className='h-[50px] cursor-pointer border' onClick={()=>handleStockSelect(stock.symbol)} key={stock.symbol}>
               <td className=' w-[70px]'>{stock.symbol}</td>
               <td className=' w-[70px]'>{stock.data.c}</td>
               <td className=' w-[70px]'><p className={`text-[${getColor(stock.data.d)}] flex items-center`} >{stock.data.d}{getIcon(stock.data.d)}</p></td>

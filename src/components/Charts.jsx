@@ -18,8 +18,11 @@ const Charts = ({chartData, symbol}) => {
             break;
         }
     }
+
+    const color = getDateFormat()
+    [getDateFormat().length-1].y - getDateFormat()[0].y > 0 ? '#26c281' : '#ed3419'
     const getBtnColor = (val) => {
-      let classu ='p-4 text-black rounded-lg mr-[6px]';
+      let classu ='p-4 text-black rounded-lg mr-[6px] border';
         if(val == dateFormat) {
           return classu + ' bg-[aqua]'
         }else{
@@ -27,6 +30,7 @@ const Charts = ({chartData, symbol}) => {
         }
     }
     const options = {
+      colors: [color],
       title: {
         text: symbol,
         align: 'center',
