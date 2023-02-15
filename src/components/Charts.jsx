@@ -24,7 +24,9 @@ const Charts = ({chartData, symbol}) => {
          }
       },
       tooltip: {
-        
+        x: {
+          format: 'MMM dd HH:MM'
+        }
       }
     }
 
@@ -33,8 +35,8 @@ const Charts = ({chartData, symbol}) => {
       data: day
     }]
   return (
-    <div>
-      <Chart options={options} series={series} type='area' width="100%"/>
+    <div className='p-4 mt-5'>
+      <Chart options={options} series={series} type='area' width="100%" height='500' />
     </div>
   )
 }
