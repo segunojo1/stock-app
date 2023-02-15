@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import finnhub from '../apis/finnhub'
-import Charts from '../components/chart'
+import Charts from '../components/Charts'
 
 
 const formatData = (data) => {
@@ -13,7 +13,7 @@ const formatData = (data) => {
      })
 }
 const StockDetail = () => {
-  const {symbol} = useParams()
+  const { symbol } = useParams();
   const [chartData, setChartData] = useState();
 
   useEffect(() => {
@@ -23,35 +23,34 @@ const StockDetail = () => {
       if(new Date().getDay() == 6) {
         oneDayAgo = currentTime - 3600* 24 * 2
       }else if(new Date().getDay() == 0){
-        oneDayAgo = currentTime - 3600* 24 * 3
+        oneDayAgo = currentTime - 3600 * 24 * 3
       }else{
         oneDayAgo = currentTime - 3600 * 24
       }
       const oneWeekAgo = currentTime - 3600* 24 * 7
       const oneYearAgo = currentTime - 3600* 24 * 365
-      console.log(new Date().getDay());
       try {
         const res = await Promise.all([finnhub.get('/stock/candle', {
            params: {
              symbol,
-             to: currentTime,
              from: oneDayAgo,
+             to: currentTime,
              resolution: 30
            }
           }),
           finnhub.get('/stock/candle', {
            params: {
              symbol,
-             to: currentTime,
              from: oneWeekAgo,
+             to: currentTime,
              resolution: 60
            }
           }),
           finnhub.get('/stock/candle', {
            params: {
              symbol,
-             to: currentTime,
              from: oneYearAgo,
+             to: currentTime,
              resolution: 'W'
            }
           })
@@ -60,33 +59,23 @@ const StockDetail = () => {
             day: formatData(res[0].data),
             week : formatData(res[1].data),
             year: formatData(res[2].data)
-          }
-        )
+          })
 
-        console.log(res);
         
       } catch (error) {
         console.log(error);
       }
     }
     fetchData()
-  }, [])
-
-  return (
-    <div>StockDetail {symbol}
-    {chartData && <Charts chartData={chartData} symbol={symbol}/>}
-    </div>
-  )
+  }, [symbol])
+  
+  console.log(chartData);
+  return <div>
+        {chartData && (
+          <div>
+            <Charts chartData={chartData} symbol={symbol}/>
+          </div>
+      ) }
+      </div>
 }
-// const chartData = [{
-//   day: formatData(),
-//   week : formatData(),
-//   year: formatData()
-// }]
-
-// const data = [
-//   {x: t,
-//    y: c
-//   }
-// ]
 export default StockDetail
