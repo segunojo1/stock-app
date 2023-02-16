@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 const StockList = () => {
     const [stocks, setstocks] = useState([])
-    const {watchedStock} = useContext(WatchListContext)
+    const {watchedStock, deleteItem} = useContext(WatchListContext)
 
     const getColor = (change) => {
          return change > 0 ? '#00FF00' : '#FF0000'
@@ -16,12 +16,7 @@ const StockList = () => {
         return change > 0 ? <IoMdArrowDropup />  : <IoMdArrowDropdown />
     }
 
-    const deleteItem = (el) => {
-      console.log('hi');
-      return watchedStock.filter((stock) => {
-        return stock != el
-      })
-    }
+    
     const navigate = useNavigate()
     const handleStockSelect =(sym) => {
       navigate(`detail/${sym}`)
@@ -62,7 +57,7 @@ const StockList = () => {
     <div className='mx-auto w-fit'>
        <table className='w-[100%]'>
         <thead className=''>
-          <tr >
+          <tr>
             <th className='h-[70px]'>Name</th>
             <th>Last</th>
             <th>Chg</th>
@@ -86,7 +81,7 @@ const StockList = () => {
               <td>{stock.data.pc}<button onClick={(e)=>{
                 e.stopPropagation()
                 deleteItem(stock.symbol)
-              }}>Delete</button></td>
+              }} className="p-2 bg-[red] text-white rounded-lg">Delete</button></td>
             </tr>
           })}
         </tbody>
