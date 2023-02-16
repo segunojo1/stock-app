@@ -16,6 +16,12 @@ const StockList = () => {
         return change > 0 ? <IoMdArrowDropup />  : <IoMdArrowDropdown />
     }
 
+    const deleteItem = (el) => {
+      console.log('hi');
+      return watchedStock.filter((stock) => {
+        return stock != el
+      })
+    }
     const navigate = useNavigate()
     const handleStockSelect =(sym) => {
       navigate(`detail/${sym}`)
@@ -77,7 +83,10 @@ const StockList = () => {
               <td className=' w-[70px]'>{stock.data.h}</td>
               <td className=' w-[70px]'>{stock.data.l}</td>
               <td className=' w-[70px]'>{stock.data.o}</td>
-              <td>{stock.data.pc}</td>
+              <td>{stock.data.pc}<button onClick={(e)=>{
+                e.stopPropagation()
+                deleteItem(stock.symbol)
+              }}>Delete</button></td>
             </tr>
           })}
         </tbody>
