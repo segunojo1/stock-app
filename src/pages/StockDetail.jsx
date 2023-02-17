@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import finnhub from '../apis/finnhub'
 import Charts from '../components/Charts'
+import StockCompany from '../components/StockCompany'
 
 
 const formatData = (data) => {
@@ -74,6 +75,9 @@ const StockDetail = () => {
         {chartData && (
           <div>
             <Charts chartData={chartData} symbol={symbol}/>
+            <div>
+              <StockCompany symbol={symbol}/>
+            </div>
           </div>
       ) }
       </div>

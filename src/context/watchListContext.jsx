@@ -8,7 +8,6 @@ export const useGlobalContext = () => {
 export const WatchListProvider = ({children}) => {
     const [watchedStock, setWatchedStock] = useState(localStorage.getItem('watchlist')?.split(',') || ['GOOGL', 'MSFT', 'TSLA'])
     useEffect(() => {
-      
         localStorage.setItem('watchlist', watchedStock)
     }, [watchedStock])
     
