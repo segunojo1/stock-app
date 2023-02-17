@@ -29,16 +29,16 @@ const StockCompany = ({symbol}) => {
   return (
     <div>
       {compDetail && (
-    <div>
-        <p>{compDetail.name}</p>
-        <p>{compDetail.country}</p>
-        <p>{compDetail.ticker}</p>
-        <p>{compDetail.exchange}</p>
-        <p>{compDetail.finnhubIndustry}</p>
-        <p>{compDetail.ipo}</p>
-        <p>{compDetail.marketCapitalization}</p>
-        <p>{compDetail.shareOutstanding}</p>
-        <p>{compDetail.weburl}</p>
+    <div className='grid md:grid-cols-3'>
+        <p><span className='font-bold'>Name:</span>{compDetail.name}</p>
+        <p><span className='font-bold'>Country:</span>{compDetail.country}</p>
+        <p><span className='font-bold'>Ticker:</span>{compDetail.ticker}</p>
+        <p><span className='font-bold'>Exchange:</span>{compDetail.exchange}</p>
+        <p><span className='font-bold'>Industry:</span>{compDetail.finnhubIndustry}</p>
+        <p><span className='font-bold'>ipo:</span>{compDetail.ipo}</p>
+        <p><span className='font-bold'>Market Capitalization:</span>{compDetail.marketCapitalization}</p>
+        <p><span className='font-bold'>Shares Outstanding:</span>{compDetail.shareOutstanding}</p>
+        <p><span className='font-bold'>Website:</span><a href={compDetail.weburl}>{compDetail.weburl}</a></p>
     </div>
       )}
     </div>
