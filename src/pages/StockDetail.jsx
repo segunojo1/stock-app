@@ -18,7 +18,7 @@ const format2 = (data) => {
     return data.t.map((da, index) => {
       return {
         x: da * 1000,
-        y: [data.o[index], data.h[index], data.c[index], data.l[index]]
+        y: [data.o[index], data.h[index], data.l[index], data.c[index]]
       }
     }) 
 }
@@ -68,7 +68,7 @@ const StockDetail = () => {
         setChartData({
             day: format2(res[0].data),
             week : formatData(res[1].data),
-            year: formatData(res[2].data)
+            year: format2(res[2].data)
           })
 console.log(res);
         

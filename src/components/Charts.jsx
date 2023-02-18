@@ -30,7 +30,7 @@ const Charts = ({chartData, symbol}) => {
         }
     }
     const options = {
-      colors: [color],
+      
       title: {
         text: symbol,
         align: 'center',
@@ -55,6 +55,17 @@ const Charts = ({chartData, symbol}) => {
           format: 'MMM dd HH:MM'
         }
       },
+      plotOptions: {
+        candlestick: {
+          colors: {
+            upward: '#3C90EB',
+            downward: '#DF7D46'
+          },
+          wick: {
+            useFillColor: false,
+          }
+        }
+      }
     }
 
     
