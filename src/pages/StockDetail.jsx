@@ -13,6 +13,15 @@ const formatData = (data) => {
          }
      })
 }
+
+const format2 = (data) => {
+    return data.t.map((da, index) => {
+      return {
+        x: da * 1000,
+        y: [data.o[index], data.h[index], data.c[index], data.l[index]]
+      }
+    }) 
+}
 const StockDetail = () => {
   const { symbol } = useParams();
   const [chartData, setChartData] = useState();
@@ -57,11 +66,11 @@ const StockDetail = () => {
           })
         ])
         setChartData({
-            day: formatData(res[0].data),
+            day: format2(res[0].data),
             week : formatData(res[1].data),
             year: formatData(res[2].data)
           })
-
+console.log(res);
         
       } catch (error) {
         console.log(error);

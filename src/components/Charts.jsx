@@ -54,16 +54,17 @@ const Charts = ({chartData, symbol}) => {
         x: {
           format: 'MMM dd HH:MM'
         }
-      }
+      },
     }
 
+    
     const series = [{
       name: symbol,
       data: getDateFormat()
     }]
   return (
     <div className='p-4 mt-5'>
-      <Chart options={options} series={series} type='area' width="100%" height='500' />
+      <Chart options={options} series={series} type='candlestick' width="100%" height='400' />
       <div>
         <button onClick={() => setDateFormat('24h')} className={getBtnColor('24h')}>Day</button>
         <button onClick={() => setDateFormat('7d')} className={getBtnColor('7d')}>Week</button>
@@ -74,3 +75,14 @@ const Charts = ({chartData, symbol}) => {
 }
 
 export default Charts
+
+//candlestick format
+// data: [{
+//   x: date,
+//   y: [o, h, c, l]
+// },
+// {
+//   x: date,
+//   y: [o, h, c, l]
+// }
+// ]

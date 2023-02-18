@@ -70,7 +70,7 @@ const StockList = () => {
         </thead>
         <tbody>
           {stocks.map((stock) => {
-            return <tr className='h-[50px] cursor-pointer border' onClick={()=>handleStockSelect(stock.symbol)} key={stock.symbol}>
+            return <tr className='h-[50px] cursor-pointer border trr' onClick={()=>handleStockSelect(stock.symbol)} key={stock.symbol}>
               <td className=' w-[70px]'>{stock.symbol}</td>
               <td className=' w-[70px]'>{stock.data.c}</td>
               <td className=' w-[70px]'><p className={`text-[${getColor(stock.data.d)}] flex items-center`} >{stock.data.d}{getIcon(stock.data.d)}</p></td>
@@ -78,10 +78,10 @@ const StockList = () => {
               <td className=' w-[70px]'>{stock.data.h}</td>
               <td className=' w-[70px]'>{stock.data.l}</td>
               <td className=' w-[70px]'>{stock.data.o}</td>
-              <td>{stock.data.pc}<button onClick={(e)=>{
+              <td className='flex items-center h-[50px] w-[120px] justify-between'><p>{stock.data.pc}</p><button onClick={(e)=>{
                 e.stopPropagation()
                 deleteItem(stock.symbol)
-              }} className="p-2 bg-[red] text-white rounded-lg">Delete</button></td>
+              }} className="p-1 bg-[red] text-white rounded-lg hidden del-btn">Delete</button></td>
             </tr>
           })}
         </tbody>
