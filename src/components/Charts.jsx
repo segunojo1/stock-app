@@ -30,7 +30,7 @@ const Charts = ({chartData, symbol}) => {
         }
     }
     const options = {
-      
+      colors: [color],
       title: {
         text: symbol,
         align: 'center',
@@ -75,7 +75,7 @@ const Charts = ({chartData, symbol}) => {
     }]
   return (
     <div className='p-4 mt-5'>
-      <Chart options={options} series={series} type='candlestick' width="100%" height='400' />
+      <Chart options={options} series={series} type='area' width="100%" height='400' />
       <div>
         <button onClick={() => setDateFormat('24h')} className={getBtnColor('24h')}>Day</button>
         <button onClick={() => setDateFormat('7d')} className={getBtnColor('7d')}>Week</button>

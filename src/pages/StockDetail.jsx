@@ -66,9 +66,9 @@ const StockDetail = () => {
           })
         ])
         setChartData({
-            day: format2(res[0].data),
+            day: formatData(res[0].data),
             week : formatData(res[1].data),
-            year: format2(res[2].data)
+            year: formatData(res[2].data)
           })
 console.log(res);
         
@@ -83,7 +83,10 @@ console.log(res);
   return <div>
         {chartData && (
           <div>
+            <div>
             <Charts chartData={chartData} symbol={symbol}/>
+            
+            </div>
             <div>
               <StockCompany symbol={symbol}/>
             </div>
