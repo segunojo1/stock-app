@@ -25,7 +25,7 @@ const format2 = (data) => {
 const StockDetail = () => {
   const { symbol } = useParams();
   const [chartData, setChartData] = useState();
-
+  const [chartData2, setChartData2] = useState();
   useEffect(() => {
     const fetchData = async () => {
       const currentTime = Math.floor(new Date().getTime() / 1000)
@@ -70,6 +70,11 @@ const StockDetail = () => {
             week : formatData(res[1].data),
             year: formatData(res[2].data)
           })
+          setChartData2({
+            day: format2(res[0].data),
+            week : format2(res[1].data),
+            year: format2(res[2].data)
+          })
 console.log(res);
         
       } catch (error) {
@@ -84,8 +89,8 @@ console.log(res);
         {chartData && (
           <div>
             <div>
-            <Charts chartData={chartData} symbol={symbol}/>
-            
+            <Charts chartData={chartData} symbol={symbol} type='area'/>
+            <Charts chartData={chartData2} symbol={symbol} type='candlestick'/>
             </div>
             <div>
               <StockCompany symbol={symbol}/>

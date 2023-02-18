@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import Chart from "react-apexcharts";
 
-const Charts = ({chartData, symbol}) => {
+const Charts = ({chartData, symbol, type}) => {
     const {day, week, year} = chartData;
     const [dateFormat, setDateFormat] = useState('24h')
 
@@ -75,7 +75,7 @@ const Charts = ({chartData, symbol}) => {
     }]
   return (
     <div className='p-4 mt-5'>
-      <Chart options={options} series={series} type='area' width="100%" height='400' />
+      <Chart options={options} series={series} type={type} width="100%" height='400' />
       <div>
         <button onClick={() => setDateFormat('24h')} className={getBtnColor('24h')}>Day</button>
         <button onClick={() => setDateFormat('7d')} className={getBtnColor('7d')}>Week</button>
