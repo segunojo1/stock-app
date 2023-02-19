@@ -22,6 +22,9 @@ const format2 = (data) => {
       }
     }) 
 }
+const switchh = () => {
+   
+}
 const StockDetail = () => {
   const { symbol } = useParams();
   const [chartData, setChartData] = useState();
@@ -90,7 +93,8 @@ console.log(res);
           <div>
             <div>
             <Charts chartData={chartData} symbol={symbol} type='area'/>
-            <Charts chartData={chartData2} symbol={symbol} type='candlestick'/>
+            <button className='p-2 bg-[red]' onClick={ switchh()}>Switch to Another chart</button>
+            <Charts chartData={chartData2} symbol={symbol} type='candlestick' />
             </div>
             <div>
               <StockCompany symbol={symbol}/>
