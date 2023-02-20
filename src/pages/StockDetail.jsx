@@ -22,8 +22,9 @@ const format2 = (data) => {
       }
     }) 
 }
+let show = false
 const switchh = () => {
-   
+   show = true
 }
 const StockDetail = () => {
   const { symbol } = useParams();
@@ -94,7 +95,7 @@ console.log(res);
             <div>
             <Charts chartData={chartData} symbol={symbol} type='area'/>
             <button className='p-2 bg-[red]' onClick={ switchh()}>Switch to Another chart</button>
-            <div className='hidden'>
+            <div className={show ? 'block' : 'hidden'}>
 
             <Charts chartData={chartData2} symbol={symbol} type='candlestick' />
             </div>

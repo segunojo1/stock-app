@@ -6,7 +6,7 @@ export const useGlobalContext = () => {
     return useContext(WatchListContext)
 }
 export const WatchListProvider = ({children}) => {
-    const [watchedStock, setWatchedStock] = useState(localStorage.getItem('watchlist')?.split(',') || ['GOOGL', 'MSFT', 'TSLA'])
+    const [watchedStock, setWatchedStock] = useState(localStorage.getItem('watchlist')?.split(',') || ['GOOGL', 'MSFT', 'TSLA', 'AMZN'])
     useEffect(() => {
         localStorage.setItem('watchlist', watchedStock)
     }, [watchedStock])
