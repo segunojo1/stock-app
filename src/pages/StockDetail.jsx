@@ -95,10 +95,10 @@ console.log(res);
             <div>
             <Charts chartData={chartData} symbol={symbol} type='area'/>
             <button className='p-2 bg-[red]' onClick={() => switchh()}>Switch to Another chart</button>
-            <div className={show ? 'block' : 'hidden'}>
+           
 
             <Charts chartData={chartData2} symbol={symbol} type='candlestick' />
-            </div>
+        
             </div>
             <div>
               <StockCompany symbol={symbol}/>
