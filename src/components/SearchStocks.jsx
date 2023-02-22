@@ -47,7 +47,6 @@ const SearchStocks = () => {
     <div className='w-fit mx-auto'>
       <input type="text" placeholder='search' id="search" className='p-[1rem] border mx-auto'
       onChange={(e)=> setSearch(e.target.value)} value={search}/>
-      <label htmlFor="search">Search</label>
       {showSearchItems()}
     </div>
   )
