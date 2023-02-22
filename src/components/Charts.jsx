@@ -76,7 +76,7 @@ const Charts = ({chartData, symbol, type}) => {
   return (
     <div className=' mt-5'>
       <Chart options={options} series={series} type={type} width="100%" height='400' />
-      <div>
+      <div className='ml-[17px]'>
         <button onClick={() => setDateFormat('24h')} className={getBtnColor('24h')}>Day</button>
         <button onClick={() => setDateFormat('7d')} className={getBtnColor('7d')}>Week</button>
         <button onClick={() => setDateFormat('1yr')} className={getBtnColor('1yr')}>Year</button>

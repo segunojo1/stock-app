@@ -97,12 +97,12 @@ console.log(res);
             <div>
               <div className={show ? 'hidden' : 'show'}>
             <Charts chartData={chartData} symbol={symbol} type='area'/>
-            <button className='p-2 bg-[red] rounded-md ml-[17px]' onClick={() => switchh()}>Switch to Another chart</button>
+            <button className='p-2 bg-[red] rounded-md ml-[17px] mt-[15px]' onClick={() => switchh()}>Switch to Another chart</button>
               </div>
            <div className={show ? 'block' : 'hidden'}>
 
             <Charts chartData={chartData2} symbol={symbol} type='candlestick' />
-            <button className='p-2 bg-[red] rounded-md ml-[17px]' onClick={() => switchh()}>Switch to Another chart</button>
+            <button className='p-2 bg-[red] rounded-md ml-[17px] mt-[15px]' onClick={() => switchh()}>Switch to Another chart</button>
            </div>
             </div>
             <div className='ml-[17px]'>

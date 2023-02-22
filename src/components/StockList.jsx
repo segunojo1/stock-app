@@ -86,6 +86,8 @@ const StockList = () => {
           })}
         </tbody>
         </table> 
+
+        <i>Built by <a href="https://segunojo.netlify.app" className='text-[blue]'>Segun Ojo</a></i>
     </div>
   )
 }
