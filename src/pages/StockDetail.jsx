@@ -22,14 +22,15 @@ const format2 = (data) => {
       }
     }) 
 }
-let show = false
-const switchh = () => {
-   show = true
-}
+
 const StockDetail = () => {
   const { symbol } = useParams();
   const [chartData, setChartData] = useState();
   const [chartData2, setChartData2] = useState();
+  let show = false
+const switchh = () => {
+   show = true
+}
   useEffect(() => {
     const fetchData = async () => {
       const currentTime = Math.floor(new Date().getTime() / 1000)
@@ -69,7 +70,7 @@ const StockDetail = () => {
            }
           })
         ])
-        
+
         setChartData({
             day: formatData(res[0].data),
             week : formatData(res[1].data),
@@ -97,9 +98,7 @@ console.log(res);
             <Charts chartData={chartData} symbol={symbol} type='area'/>
             <button className='p-2 bg-[red]' onClick={() => switchh()}>Switch to Another chart</button>
            
-
             <Charts chartData={chartData2} symbol={symbol} type='candlestick' />
-        
             </div>
             <div>
               <StockCompany symbol={symbol}/>
