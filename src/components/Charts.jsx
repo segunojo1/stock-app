@@ -74,7 +74,7 @@ const Charts = ({chartData, symbol, type}) => {
       data: getDateFormat()
     }]
   return (
-    <div className='p-4 mt-5'>
+    <div className=' mt-5'>
       <Chart options={options} series={series} type={type} width="100%" height='400' />
       <div>
         <button onClick={() => setDateFormat('24h')} className={getBtnColor('24h')}>Day</button>
