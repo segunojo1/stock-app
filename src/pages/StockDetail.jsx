@@ -69,6 +69,7 @@ const StockDetail = () => {
            }
           })
         ])
+        
         setChartData({
             day: formatData(res[0].data),
             week : formatData(res[1].data),
