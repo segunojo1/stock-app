@@ -27,9 +27,9 @@ const StockDetail = () => {
   const { symbol } = useParams();
   const [chartData, setChartData] = useState();
   const [chartData2, setChartData2] = useState();
-  let show = false
+  const [show, setShow] = useState(false)
 const switchh = () => {
-   show = true
+   setShow(prev => !prev)
 }
   useEffect(() => {
     const fetchData = async () => {
@@ -95,12 +95,17 @@ console.log(res);
         {chartData && (
           <div>
             <div>
+              <div className={show ? 'hidden' : 'show'}>
             <Charts chartData={chartData} symbol={symbol} type='area'/>
-            <button className='p-2 bg-[red]' onClick={() => switchh()}>Switch to Another chart</button>
-           
+            <button className='p-2 bg-[red] rounded-md ml-[17px]' onClick={() => switchh()}>Switch to Another chart</button>
+              </div>
+           <div className={show ? 'block' : 'hidden'}>
+
             <Charts chartData={chartData2} symbol={symbol} type='candlestick' />
+            <button className='p-2 bg-[red] rounded-md ml-[17px]' onClick={() => switchh()}>Switch to Another chart</button>
+           </div>
             </div>
-            <div>
+            <div className='ml-[17px]'>
               <StockCompany symbol={symbol}/>
             </div>
           </div>

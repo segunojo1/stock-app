@@ -12,7 +12,7 @@ const SearchStocks = () => {
     return (
       <ul className={`${showItem} border h-[500px] w-[300px] p-[10px] overflow-y-scroll absolute z-index-9999 bg-white`}>
         {results.map((result) => {
-           return <li key={result.symbol} onClick={()=>{
+           return <li className='cursor-pointer' key={result.symbol} onClick={()=>{
             addToStocks(result.symbol)
             setSearch('')
            }}>{result.description}({result.symbol})</li>
