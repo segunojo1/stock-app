@@ -9,7 +9,7 @@ const formatData = (data) => {
       return data.t.map((elem, index) => {
          return {
           x: elem * 1000,
-          y: data.c[index]
+          y: Math.round(data.c[index] * 10) /10
          }
      })
 }
@@ -18,7 +18,7 @@ const format2 = (data) => {
     return data.t.map((da, index) => {
       return {
         x: da * 1000,
-        y: [data.o[index], data.h[index], data.l[index], data.c[index]]
+        y: [Math.round(data.o[index] * 10) /10, Math.round(data.h[index] * 10) /10, Math.round(data.l[index] * 10) /10, Math.round(data.c[index] * 10) /10]
       }
     }) 
 }
