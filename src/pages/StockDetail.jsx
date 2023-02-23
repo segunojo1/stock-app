@@ -28,10 +28,12 @@ const StockDetail = () => {
   const [chartData, setChartData] = useState();
   const [chartData2, setChartData2] = useState();
   const [show, setShow] = useState(false)
+  const [loading, setIsloading] = useState(false)
 const switchh = () => {
    setShow(prev => !prev)
 }
   useEffect(() => {
+    setIsloading(true)
     const fetchData = async () => {
       const currentTime = Math.floor(new Date().getTime() / 1000)
       let oneDayAgo;
@@ -88,9 +90,16 @@ console.log(res);
       }
     }
     fetchData()
+    setIsloading(false)
   }, [symbol])
   
   console.log(chartData);
+  if(loading) {
+    return <div>
+      <h1>Loading</h1>
+    </div>
+  }else{
+
   return <div>
         {chartData && (
           <div>
@@ -111,5 +120,6 @@ console.log(res);
           </div>
       ) }
       </div>
+  }
 }
 export default StockDetail
