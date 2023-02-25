@@ -28,7 +28,7 @@ const StockDetail = () => {
   const [chartData, setChartData] = useState();
   const [chartData2, setChartData2] = useState();
   const [show, setShow] = useState(false)
-  const [loading, setIsloading] = useState(false)
+  const [loading, setIsloading] = useState()
 const switchh = () => {
    setShow(prev => !prev)
 }
@@ -90,8 +90,8 @@ console.log(res);
       }
     }
     fetchData()
-    setIsloading(false)
   }, [symbol])
+  
   
   console.log(chartData);
   if(loading) {
