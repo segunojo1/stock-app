@@ -22,6 +22,7 @@ This web app allows you to search for stock prices of different companies throug
 - Tailwind css
 - React router(for routing)
 - Axios
+- Apex charts
 
 ### What I learned
 
