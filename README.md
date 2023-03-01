@@ -8,9 +8,8 @@ This web app allows you to search for stock prices of different companies throug
   - [Links](#links)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Useful resources](#useful-resources)
+  - [Useful resoures](#useful-resources)
   - [Author](#author)
-
 
 ### Links
 
