@@ -13,7 +13,7 @@ This web app allows you to search for stock prices of different companies throug
 
 ### Links
 
-- Live Site URL: [Stocks](https://stock-app-tau.vercel.app). b
+- Live Site URL: [Stocks](https://stock-app-tau.vercel.app).
 
 ### Built with
 
