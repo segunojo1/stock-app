@@ -42,3 +42,4 @@ I learned more about all these with this project
 - Website - [Segun Ojo](https://segunojo.netlify.app)
 - Twitter - [@segun0x](https://www.twitter.com/segun0x)
 - Instagram - [@__segunx](https://www.instagram.com/__segunx)
+- Linkedin - [Oluwasegun Ojo](https://www.linkedin.com/segun0x)
